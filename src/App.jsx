@@ -2,18 +2,17 @@
 import { useState} from "react"
 import Header from "./components/Header/Header";
 import CoreConcept from "./components/CoreConcepts";
-import { CORE_CONCEPTS } from "./data";
 import TabButton from "./components/TabButton"
-import { EXAMPLES } from "./data-with-examples";
+import { EXAMPLES, CORE_CONCEPTS } from "./data-with-examples";
 
 function App() {
   const [selectedTopic, setSelectedTopic] = useState("components");
 
   
-
-  function handleClick(id) {
+function handleClick(id) {
     setSelectedTopic(id);
 }
+
 let tabContent = <p> 
   Please select a topic
 </p>
@@ -43,20 +42,29 @@ if (selectedTopic) {
             <CoreConcept
               key={index}
               image={concept.image}
-              title={concept.title}
-              description={concept.description}
+              {...concept}
             />
           ))}
 
         </ul>
         </section>
-        <section id="excamples">
+        <section id="examples">
           <h2> Examples</h2>
           <menu>
-            <TabButton onSelect={() => handleClick("Components")}>Components</TabButton>
-            <TabButton onSelect={() => handleClick("JSX")}>JSX</TabButton>
-            <TabButton onSelect={() => handleClick("Props")}>Props</TabButton>
-            <TabButton onSelect={() => handleClick("State")}>State</TabButton>
+          {
+            Object.keys(EXAMPLES).map((key) => {
+              return (
+                <TabButton
+                key={key}
+                onSelect={() => handleClick(key)}
+                isSelected={selectedTopic === key}
+                >
+                  {EXAMPLES[key].title}xs
+                </TabButton>
+              )
+              
+            })
+          } 
           </menu>
               
           {tabContent}
