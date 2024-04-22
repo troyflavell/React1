@@ -1,16 +1,23 @@
-function CoreConcept({
-    image,
-    title,
-    description
+import CoreConcept from "./CoreConcept";
 
-}) {
+function CoreConcepts() {
     return ( 
-        <li>
-            <img src = {image} alt = {title}/>
-            <h3> {title} </h3> 
-            <p> {description} </p> 
-        </li>
+        <section id="core-concepts">
+
+      
+        <h2></h2>
+        <ul>
+          {CORE_CONCEPTS.map((concept, index) => (
+            <CoreConcept
+              key={index}
+              image={concept.image}
+              {...concept}
+            />
+          ))}
+
+        </ul>
+        </section>
      );
 }
 
-export default CoreConcept;
+export default CoreConcepts;

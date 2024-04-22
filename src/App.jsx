@@ -1,7 +1,7 @@
 
-import { useState} from "react"
+import { useState, Fragment} from "react"
 import Header from "./components/Header/Header";
-import CoreConcept from "./components/CoreConcepts";
+import CoreConcepts from "./components/CoreConcepts"
 import TabButton from "./components/TabButton"
 import { EXAMPLES, CORE_CONCEPTS } from "./data-with-examples";
 
@@ -30,24 +30,12 @@ if (selectedTopic) {
 }
 
   return (
-    <div>
+    <>
         <Header />
       <main>
-        <section id="core-concepts">
 
-      
-        <h2></h2>
-        <ul>
-          {CORE_CONCEPTS.map((concept, index) => (
-            <CoreConcept
-              key={index}
-              image={concept.image}
-              {...concept}
-            />
-          ))}
-
-        </ul>
-        </section>
+        <CoreConcepts />
+   
         <section id="examples">
           <h2> Examples</h2>
           <menu>
@@ -71,7 +59,7 @@ if (selectedTopic) {
 
         </section>
       </main>
-    </div>
+    </>
   );
 }
 
