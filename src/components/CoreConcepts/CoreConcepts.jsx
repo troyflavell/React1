@@ -1,13 +1,15 @@
 import CoreConcept from "./CoreConcept";
 
-function CoreConcepts() {
+function CoreConcepts(
+    { coreConcepts}
+) {
     return ( 
         <section id="core-concepts">
 
       
-        <h2></h2>
+        <h2>Core Concepts</h2>
         <ul>
-          {CORE_CONCEPTS.map((concept, index) => (
+          {coreConcepts.map((concept, index) => (
             <CoreConcept
               key={index}
               image={concept.image}
